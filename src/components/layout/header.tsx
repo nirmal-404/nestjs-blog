@@ -6,6 +6,7 @@ import { Button } from '../ui/button'
 import { useRouter } from 'next/navigation'
 import { useSession } from "@/lib/auth-client";
 import UserMenu from '../auth/user-menu'
+import ThemeToggle from '../theme/theme-toggle'
 // import UserMenu from "../auth/user-menu";
 // import ThemeToggle from "../theme/theme-toggle";
 
@@ -49,7 +50,9 @@ function Header () {
             {/* Keep an placeholder for search */}
           </div>
           {/* placeholder for theme toggle */}
-          {isPending ? null : session?.user ? (
+          <ThemeToggle />
+          <div className="flex items-center gap-2">
+            {isPending ? null : session?.user ? (
               <UserMenu user={session?.user} />
             ) : (
               <Button
@@ -59,6 +62,7 @@ function Header () {
                 Login
               </Button>
             )}
+          </div>
         </div>
       </div>
     </header>
